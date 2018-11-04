@@ -1,10 +1,15 @@
 #include "ProcessGenerator.h"
 #include<random>
 
-ProcessGenerator::ProcessGenerator(string _inputFile, string _outputFile)
+ProcessGenerator::ProcessGenerator(int _processesCount, double _arrivalTimeMu, double _arrivalTimeSigma, double _burstTimeMu,
+	double _burstTimeSigma, double _priorityLambda)
 {
-	inputFile = _inputFile + ".txt";
-	outputFile = _outputFile + ".txt";
+	processesCount = _processesCount;
+	arrivalTimeMu = _arrivalTimeMu;
+	arrivalTimeSigma = _arrivalTimeSigma;
+	burstTimeMu = _burstTimeMu;
+	burstTimeSigma = _burstTimeSigma;
+	priorityLambda = _priorityLambda;
 }
 
 vector<double>ProcessGenerator::getNormalDistribution(double mu, double sigma)
@@ -39,9 +44,9 @@ vector<double>ProcessGenerator::getPossionDistribution(double lambda)
 	return ret;
 }
 
-void ProcessGenerator::generateProcesses()
+vector<Process> ProcessGenerator::generateProcesses()
 {
-	processes.resize(processesCount);
+	vector<Process>processes(processesCount);
 
 	vector<double> arrivalTime = getNormalDistribution(arrivalTimeMu, arrivalTimeSigma);
 	vector<double> busrtTime = getNormalDistribution(burstTimeMu, burstTimeSigma);
@@ -52,40 +57,11 @@ void ProcessGenerator::generateProcesses()
 
 		processes[i-1] = newProcess;
 	}
+
+	return processes;
 }
 
-void ProcessGenerator::readInputFile()
+vector<Process> ProcessGenerator::run()
 {
-	ifstream in;
-	in.open(inputFile);
-
-	in >> processesCount;
-	in >> arrivalTimeMu >> arrivalTimeSigma;
-	in >> burstTimeMu >> burstTimeSigma;
-	in >> priorityLambda;
-
-	in.close();
-}
-
-void ProcessGenerator::printProcessesToFile()
-{
-	ofstream out;
-	out.open(outputFile);
-
-	out << processesCount << endl;
-
-	for (int i = 0; i < processesCount; i++) {
-		out << processes[i];
-	}
-
-	out.close();
-}
-
-void ProcessGenerator::run()
-{
-	readInputFile();
-
-	generateProcesses();
-
-	printProcessesToFile();
+	return generateProcesses();
 }

@@ -1,16 +1,25 @@
 #include <iostream>
 #include<queue>
 #include "ProcessGenerator.h"
+#include "GenerationParams.h"
+#include "Process.h"
+#include "IO.h"
 
 using namespace std;
 
 int main()
 {
 	//testing code
-	ProcessGenerator gen("../Input/input", "../Output/output");
+	IO inputReader;
+	GenerationParams params = inputReader.readParamsFile("../Input/input");
 
-	gen.run();
+	ProcessGenerator gen(params.processesCount, params.arrivalTimeMu, params.arrivalTimeSigma, params.burstTimeMu, params.burstTimeSigma, params.priorityLambda);
 
+	vector<Process> processes = gen.run();
+
+	IO outputWriter;
+	outputWriter.writeGeneratedFile("../Output/output", processes);
+	
 	cout << "done";
 
 	int wait; cin >> wait;

@@ -1,19 +1,26 @@
-#include<fstream>
+#ifndef	PROCESS_H
+#define PROCESS_H
 
-using namespace std;
-
-class Process
+struct Process
 {
-public:
 	int id;
 	double arrivalTime;
 	double burstTime;
 	double priority;
 	double remainingTime;
 
-	Process();
+	Process() {
+		//Empty
+	}
 
-	Process(int id, double arrival, double burst, double prioirty);
-
-	friend ofstream& operator << (ofstream &out, const Process process);
+	Process(int _id, double _arrival, double _burst, double _prioirty)
+	{
+		id = _id;
+		arrivalTime = _arrival;
+		burstTime = _burst;
+		priority = _prioirty;
+		remainingTime = burstTime;
+	}
 };
+
+#endif PROCESS_H;

@@ -1,3 +1,6 @@
+#ifndef	CONSTANTS_H
+#define CONSTANTS_H
+
 class Constants
 {
 public:
@@ -8,7 +11,7 @@ public:
 	static double maxArrivalTime;
 	static double maxBurstTime;
 	static double maxPriority;
-	
+
 	static void initializeConstants()
 	{
 		quantumSize = 5;
@@ -19,3 +22,5 @@ public:
 		maxPriority = 20.0;
 	}
 };
+
+#endif CONSTANTS_H;
