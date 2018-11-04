@@ -24,4 +24,4 @@ public:
 	void writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks);
 };
 
-#endif IO_H;
+#endif

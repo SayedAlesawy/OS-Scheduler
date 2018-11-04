@@ -22,4 +22,4 @@ struct GenerationParams
 	}
 };
 
-#endif GENERATIONPARAMS_H;
+#endif

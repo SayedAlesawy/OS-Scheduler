@@ -20,4 +20,4 @@ struct ScheduledTask
 	}
 };
 
-#endif SCHEDULEDTASK_H;
+#endif

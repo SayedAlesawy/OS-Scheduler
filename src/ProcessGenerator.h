@@ -29,4 +29,4 @@ public:
 	vector<Process> run();
 };
 
-#endif PROCESSGENERATOR_H;
+#endif
