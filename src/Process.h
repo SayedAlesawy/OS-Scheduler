@@ -4,16 +4,16 @@
 struct Process
 {
 	int id;
-	double arrivalTime;
-	double burstTime;
-	double priority;
-	double remainingTime;
+    int arrivalTime;
+    int burstTime;
+    int priority;
+    int remainingTime;
 
 	Process() {
 		//Empty
 	}
 
-	Process(int _id, double _arrival, double _burst, double _prioirty)
+    Process(int _id, int _arrival, int _burst, int _prioirty)
 	{
 		id = _id;
 		arrivalTime = _arrival;

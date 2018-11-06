@@ -4,18 +4,22 @@
 #include <vector>
 #include "Process.h"
 #include "ScheduledTask.h"
+#include "Broadcaster.h"
+#include "Event.h"
 
-class Scheduler
+class Scheduler : public Broadcaster
 {
-    typedef std::vector<Process>::iterator ProcessIterator;
-    typedef std::vector<ScheduledTask> ScheduledTaskIterator;
+public:
+    void simulate();
+    virtual void submitProcess(Process process) = 0;
+    virtual int currentTask() = 0;
+    
+protected:
+    virtual void beginStep() = 0;
+    int currentSlice() const;
 
-    virtual bool submitProcesses(ProcessIterator begin, ProcessIterator end) = 0;
-    virtual void simulate() = 0;
-    virtual ScheduledTaskIterator outputBegin() = 0;
-    virtual ScheduledTaskIterator outputEnd() = 0;
-
-    virtual ~Scheduler() = 0;
+private:
+    int slice;
 };
 
 #endif

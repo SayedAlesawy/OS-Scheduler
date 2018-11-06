@@ -1,9 +1,12 @@
 #include <iostream>
-#include<queue>
+#include <queue>
+
 #include "ProcessGenerator.h"
 #include "GenerationParams.h"
 #include "Process.h"
 #include "IO.h"
+#include "SchedulerFCFS.h"
+#include "TaskManager.h"
 
 using namespace std;
 
@@ -17,8 +20,14 @@ int main()
 
 	vector<Process> processes = gen.run();
 
-	IO outputWriter;
-	outputWriter.writeGeneratedFile("../Output/output", processes);
+    SchedulerFCFS fcfs;
+    TaskManager manager(&fcfs);
+
+    manager.submitProcesses(processes);
+    fcfs.simulate();
+
+    // IO outputWriter;
+    // outputWriter.writeGeneratedFile("../Output/output", processes);
 	
 	cout << "done";
 

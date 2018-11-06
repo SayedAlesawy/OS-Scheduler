@@ -16,9 +16,9 @@ private:
 	double burstTimeSigma;
 	double priorityLambda;
 
-	vector<double>getNormalDistribution(double mu, double sigma);
+    vector<int>getNormalDistribution(double mu, double sigma);
 
-	vector<double>getPossionDistribution(double lambda);
+    vector<int>getPossionDistribution(double lambda);
 
 	vector<Process> generateProcesses();
 
