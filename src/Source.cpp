@@ -6,6 +6,7 @@
 #include "Process.h"
 #include "IO.h"
 #include "SchedulerFCFS.h"
+#include "SchedulerHPF.h"
 #include "TaskManager.h"
 
 using namespace std;
@@ -20,12 +21,15 @@ int main()
 
 	vector<Process> processes = gen.run();
 
-    SchedulerFCFS fcfs;
-    TaskManager manager(&fcfs);
+    //SchedulerFCFS fcfs;
+    //TaskManager manager(&fcfs);
+    //manager.submitProcesses(processes);
+    //fcfs.simulate();
 
-    manager.submitProcesses(processes);
-    fcfs.simulate();
-
+	SchedulerHPF hpf;
+	TaskManager manager(&hpf);
+	manager.submitProcesses(processes);
+	hpf.simulate();
     // IO outputWriter;
     // outputWriter.writeGeneratedFile("../Output/output", processes);
 	

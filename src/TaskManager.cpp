@@ -16,7 +16,7 @@ void TaskManager::submitProcesses(std::vector<Process> processes)
 
     for(auto process : this->processes)
     {
-        std::cout << process.id << " " << process.arrivalTime << " " << process.burstTime << '\n';
+		std::cout << process.id << " " << process.arrivalTime << " " << process.burstTime << " " << process.priority << '\n';
     }
 }
 
