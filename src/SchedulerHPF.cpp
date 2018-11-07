@@ -1,5 +1,5 @@
 #include "SchedulerHPF.h"
-#include <iostream>
+//#include <iostream>
 
 void SchedulerHPF::submitProcess(Process process)
 {
@@ -8,7 +8,7 @@ void SchedulerHPF::submitProcess(Process process)
 
 int SchedulerHPF::currentTask()
 {
-	return processQueue.top().id;
+	return currentProcess.id;
 }
 
 void SchedulerHPF::beginStep()

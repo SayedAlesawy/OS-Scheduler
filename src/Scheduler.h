@@ -17,7 +17,7 @@ public:
 protected:
     virtual void beginStep() = 0;
     int currentSlice() const;
-
+	
 private:
     int slice;
 };

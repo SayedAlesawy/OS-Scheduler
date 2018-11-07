@@ -7,6 +7,7 @@
 #include "IO.h"
 #include "SchedulerFCFS.h"
 #include "SchedulerHPF.h"
+#include "SchedulerRR.h"
 #include "TaskManager.h"
 
 using namespace std;
@@ -26,10 +27,16 @@ int main()
     //manager.submitProcesses(processes);
     //fcfs.simulate();
 
-	SchedulerHPF hpf;
-	TaskManager manager(&hpf);
-	manager.submitProcesses(processes);
-	hpf.simulate();
+	//SchedulerHPF hpf;
+	//TaskManager manager(&hpf);
+	//manager.submitProcesses(processes);
+	//hpf.simulate();
+
+	//SchedulerRR RR;
+	//TaskManager manager(&RR);
+	//manager.submitProcesses(processes);
+	//RR.simulate();
+
     // IO outputWriter;
     // outputWriter.writeGeneratedFile("../Output/output", processes);
 	
