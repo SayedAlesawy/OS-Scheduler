@@ -10,6 +10,8 @@
 class Scheduler : public Broadcaster
 {
 public:
+    Scheduler(int contextSwitchTime=0);
+
     void simulate();
     virtual void submitProcess(Process process) = 0;
     virtual int currentTask() = 0;
@@ -17,9 +19,12 @@ public:
 protected:
     virtual void beginStep() = 0;
     int currentSlice() const;
+    void switchContext();
 	
 private:
     int slice;
+    const int contextSwitchTime;
+    int csRemainingTime;
 };
 
 #endif
