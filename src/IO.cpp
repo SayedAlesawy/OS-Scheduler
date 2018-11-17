@@ -25,6 +25,7 @@ GenerationParams IO::readParamsFile(string inputFile)
 	return params;
 }
 
+/*
 vector<ScheduledTask> IO::readScheduledTasks(string inputFile)
 {
 	ifstream in;
@@ -48,6 +49,7 @@ vector<ScheduledTask> IO::readScheduledTasks(string inputFile)
 
 	return tasks;
 }
+*/
 
 void IO::writeGeneratedFile(string outputFile, vector<Process> processes)
 {
@@ -63,6 +65,7 @@ void IO::writeGeneratedFile(string outputFile, vector<Process> processes)
 	out.close();
 }
 
+/*
 void IO::writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks)
 {
 	ofstream out;
@@ -76,3 +79,4 @@ void IO::writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks)
 
 	out.close();
 }
+*/

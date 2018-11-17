@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "Process.h"
-#include "ScheduledTask.h"
 #include "Broadcaster.h"
 #include "Event.h"
 
@@ -15,6 +14,7 @@ public:
     void simulate();
     virtual void submitProcess(Process process) = 0;
     virtual int currentTask() = 0;
+    virtual ~Scheduler() {};
     
 protected:
     virtual void beginStep() = 0;

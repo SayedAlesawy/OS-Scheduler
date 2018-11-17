@@ -10,7 +10,8 @@ class Broadcaster
 {
 public:
     void subscribe(Subscriber* subscriber);
-    
+    virtual ~Broadcaster() {};
+
 protected:
     void notifySubscribers(const Event& e);
 

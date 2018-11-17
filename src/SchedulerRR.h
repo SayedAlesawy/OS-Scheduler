@@ -4,7 +4,6 @@
 #include <queue>
 #include "Scheduler.h"
 #include "Process.h"
-#include "ScheduledTask.h"
 
 class SchedulerRR : public Scheduler
 {
@@ -17,7 +16,6 @@ protected:
 
 private:
 	std::queue<Process> processQueue;
-	ScheduledTask completedTask;
 	Process currentProcess;
 	bool busy = false;
 	int quantum = 5, quanta = 5;

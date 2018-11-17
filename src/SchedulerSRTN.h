@@ -4,7 +4,6 @@
 #include <queue>
 #include "Scheduler.h"
 #include "Process.h"
-#include "ScheduledTask.h"
 #include "Event.h"
 
 class SchedulerSRTN : public Scheduler
@@ -25,9 +24,7 @@ private:
             return p1.remainingTime < p2.remainingTime;
         }
     };
-    typedef std::priority_queue<Process, std::vector<Process>, Comparator> PriorityQueue;
-
-    PriorityQueue processQueue;
+    std::priority_queue<Process, std::vector<Process>, Comparator> processQueue;
 };
 
 #endif // SCHEDULERSRTN_H

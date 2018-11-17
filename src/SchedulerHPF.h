@@ -4,7 +4,6 @@
 #include <queue>
 #include "Scheduler.h"
 #include "Process.h"
-#include "ScheduledTask.h"
 
 class SchedulerHPF : public Scheduler
 {
@@ -24,7 +23,6 @@ private:
 	};
 
 	std::priority_queue <Process, std::vector<Process>, Comparator> processQueue;
-	ScheduledTask completedTask;
 	Process currentProcess;
 	bool busy = false;
 };

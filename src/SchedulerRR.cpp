@@ -15,15 +15,13 @@ void SchedulerRR::beginStep()
 {
 	if (busy) {
 		if (currentProcess.remainingTime == 0) {
-			completedTask.end = currentSlice();
-			busy = false;
+            busy = false;
 
 			//std::cout << "Task finished" << std::endl;
 			//std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
 		}
 		else if (quantum == 0) {
-			completedTask.end = currentSlice();
-			processQueue.push(currentProcess);
+            processQueue.push(currentProcess);
 			busy = false;
 
 			//std::cout << "Run finished" << std::endl;
@@ -39,9 +37,7 @@ void SchedulerRR::beginStep()
 
 		currentProcess = processQueue.front();
 		processQueue.pop();
-		completedTask.begin = currentSlice();
-		completedTask.id = currentProcess.id;
-		busy = true;
+        busy = true;
 		quantum = quanta;
 
 		//std::cout << "New task #: " << currentProcess.id << " burst time: " << currentProcess.remainingTime << " at: " << currentSlice() << std::endl;

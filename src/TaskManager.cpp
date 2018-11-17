@@ -22,14 +22,6 @@ void TaskManager::submitProcesses(std::vector<Process> processes)
 
 void TaskManager::update(const Event& e)
 {
-    switch(e.eventType())
-    {
-		case Event::NEW_TIME_SLICE:
-			while(index < processes.size() && processes[index].arrivalTime == e.timeStep())
-				scheduler->submitProcess(processes[index++]);
-			break;
-		case Event::TASK_FINISHED:
-			ScheduledTask task = e.finishedTask();
-			break;
-    }
+    while(index < processes.size() && processes[index].arrivalTime >= e.timestep)
+        scheduler->submitProcess(processes[index++]);
 }

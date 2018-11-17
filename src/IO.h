@@ -6,7 +6,6 @@
 #include <vector>
 #include "Process.h"
 #include "GenerationParams.h"
-#include "ScheduledTask.h"
 
 using namespace std;
 
@@ -17,11 +16,11 @@ public:
 
 	GenerationParams readParamsFile(string inputFile);
 
-	vector<ScheduledTask> readScheduledTasks(string inputFile);
+    // vector<ScheduledTask> readScheduledTasks(string inputFile);
 
 	void writeGeneratedFile(string outputFile, vector<Process> processes);
 
-	void writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks);
+    // void writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks);
 };
 
 #endif
