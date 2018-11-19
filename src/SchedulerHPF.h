@@ -9,7 +9,8 @@ class SchedulerHPF : public Scheduler
 {
 public:
 	void submitProcess(Process process) override;
-	int currentTask() override;
+    int _currentTask() override;
+    bool isQueueEmpty() override {return processQueue.empty() && !busy;}
 
 protected:
 	void beginStep() override;

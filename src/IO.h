@@ -21,6 +21,8 @@ public:
 	void writeGeneratedFile(string outputFile, vector<Process> processes);
 
     // void writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks);
+
+    bool error;
 };
 
 #endif

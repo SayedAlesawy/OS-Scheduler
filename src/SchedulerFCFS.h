@@ -9,7 +9,8 @@ class SchedulerFCFS : public Scheduler
 {
 public:
     void submitProcess(Process process) override;
-    int currentTask() override;
+    int _currentTask() override;
+    bool isQueueEmpty() override {return processQueue.empty();}
     
 protected:
     void beginStep() override;

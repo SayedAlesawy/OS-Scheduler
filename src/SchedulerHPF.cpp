@@ -6,9 +6,13 @@ void SchedulerHPF::submitProcess(Process process)
 	processQueue.push(process);
 }
 
-int SchedulerHPF::currentTask()
+int SchedulerHPF::_currentTask()
 {
-	return currentProcess.id;
+    if(busy)
+        return currentProcess.id;
+    if(processQueue.empty())
+        return -1;
+    return processQueue.top().id;
 }
 
 void SchedulerHPF::beginStep()
@@ -16,7 +20,7 @@ void SchedulerHPF::beginStep()
 	if (busy) {
 		if (currentProcess.remainingTime == 0) {
             busy = false;
-
+            switchContext();
 			//std::cout << "Task finished, priority: " << currentProcess.priority << " " << std::endl;
 			//std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
 		}

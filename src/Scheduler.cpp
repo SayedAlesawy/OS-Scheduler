@@ -7,7 +7,8 @@ Scheduler::Scheduler(int contextSwitchTime) :
 
 void Scheduler::simulate()
 {
-    for(slice = 0; ; slice++)
+    end = false;
+    for(slice = 0; !end; slice++)
     {
         notifySubscribers(Event(slice));
         if(csRemainingTime > 0)
@@ -15,6 +16,19 @@ void Scheduler::simulate()
         else
             beginStep();
     }
+}
+
+void Scheduler::endSimulation()
+{
+    end = true;
+}
+
+
+int Scheduler::currentTask()
+{
+    if(csRemainingTime > 0)
+        return -1;
+    return _currentTask();
 }
 
 int Scheduler::currentSlice() const

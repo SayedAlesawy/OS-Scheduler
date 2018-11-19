@@ -7,16 +7,28 @@ IO::IO()
 
 GenerationParams IO::readParamsFile(string inputFile)
 {
+    error = false;
 	ifstream in;
 	in.open(inputFile + ".txt");
 
-	int processesCount;
-	double arrivalTimeMu, arrivalTimeSigma, burstTimeMu, burstTimeSigma, priorityLambda;
+    int processesCount = 0;
+    double arrivalTimeMu = 0,
+            arrivalTimeSigma = 0,
+            burstTimeMu = 0,
+            burstTimeSigma = 0,
+            priorityLambda = 0;
 
-	in >> processesCount;
-	in >> arrivalTimeMu >> arrivalTimeSigma;
-	in >> burstTimeMu >> burstTimeSigma;
-	in >> priorityLambda;
+    if(in.is_open())
+    {
+        in >> processesCount;
+        in >> arrivalTimeMu >> arrivalTimeSigma;
+        in >> burstTimeMu >> burstTimeSigma;
+        in >> priorityLambda;
+    }
+    else
+    {
+        error = true;
+    }
 
 	GenerationParams params(processesCount, arrivalTimeMu, arrivalTimeSigma, burstTimeMu, burstTimeSigma, priorityLambda);
 

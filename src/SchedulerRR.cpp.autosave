@@ -14,22 +14,22 @@ int SchedulerRR::_currentTask()
 void SchedulerRR::beginStep()
 {
 	if (busy) {
-        if (quantum == 0) {
+		if (currentProcess.remainingTime == 0) {
+            busy = false;
+            switchContext();
+			//std::cout << "Task finished" << std::endl;
+			//std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
+		}
+		else if (quantum == 0) {
             processQueue.push(currentProcess);
 			busy = false;
-            switchContext();
+            switchContext();            
 			//std::cout << "Run finished" << std::endl;
 			//std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
 		}
 		else {
 			currentProcess.remainingTime--;
 			quantum--;
-            if (currentProcess.remainingTime == 0) {
-                busy = false;
-                switchContext();
-                //std::cout << "Task finished" << std::endl;
-                //std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
-            }
 		}
 	}
 	else {

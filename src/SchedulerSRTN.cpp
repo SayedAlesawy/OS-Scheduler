@@ -9,8 +9,10 @@ void SchedulerSRTN::submitProcess(Process process)
 }
 
 
-int SchedulerSRTN::currentTask()
+int SchedulerSRTN::_currentTask()
 {
+    if(processQueue.empty())
+        return -1;
     return processQueue.top().id;
 }
 
@@ -22,5 +24,7 @@ void SchedulerSRTN::beginStep()
     p.remainingTime--;
     if(p.remainingTime != 0)
         processQueue.push(p);
+    else
+        switchContext();
 }
 

@@ -10,9 +10,10 @@
 #include "SchedulerRR.h"
 #include "TaskManager.h"
 
+
 using namespace std;
 
-int main()
+int maina()
 {
 	//testing code
 	IO inputReader;
