@@ -27,6 +27,6 @@ void TaskManager::update(const Event& e)
 {
     if(index >= processes.size() && scheduler->isQueueEmpty())
         scheduler->endSimulation();
-    while(index < processes.size() && processes[index].arrivalTime >= e.timestep)
+    while(index < processes.size() && processes[index].arrivalTime <= e.timestep)
         scheduler->submitProcess(processes[index++]);
 }

@@ -5,7 +5,7 @@ SchedulerSRTN::SchedulerSRTN()
 
 void SchedulerSRTN::submitProcess(Process process)
 {
-    int lastId = -1;
+    int lastId = process.id;
     if(!processQueue.empty())
         lastId = processQueue.top().id;
     processQueue.push(process);

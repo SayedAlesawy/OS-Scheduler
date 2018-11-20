@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
     <item>
-     <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0" columnstretch="0,0,0">
+     <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0" columnstretch="0,0,0">
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
@@ -77,16 +77,9 @@
       <item row="5" column="0" colspan="3">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="showStatsBtn">
           <property name="text">
            <string>Show Statistics</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Show Processes</string>
           </property>
          </widget>
         </item>

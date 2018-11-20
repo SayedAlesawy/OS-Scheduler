@@ -25,10 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::update(const Event& e)
 {
-    qDebug() << e.timestep << " " << scheduler->currentTask();
+    if(scheduler->currentTask() != 0)
+        processes[scheduler->currentTask() - 1].finishTime = e.timestep + 1;
     series->append(e.timestep, scheduler->currentTask());
     series->append(e.timestep + 1, scheduler->currentTask());
-    chart->axisX(series)->setMax(e.timestep);
+    chart->axisX(series)->setMax(e.timestep + 1);
 }
 
 void MainWindow::setUpChart()
@@ -37,7 +38,9 @@ void MainWindow::setUpChart()
     chart->legend()->markers(series)[0]->setVisible(false);
     chart->createDefaultAxes();
     ui->horizontalLayout->addWidget(chartView);
-    chart->axisY(series)->setMin(-1);
+    QValueAxis* yAxis = new QValueAxis();
+    chart->setAxisY(yAxis, series);
+    yAxis->setGridLineVisible(true);
 }
 
 
@@ -73,8 +76,12 @@ void MainWindow::on_browseBtn_clicked()
                          params.burstTimeSigma,
                          params.priorityLambda);
     processes = gen.run();
-    chart->axisY(series)->setMax((int) processes.size() + 1);
     ui->fileEdit->setText(selectedFile);
+    QValueAxis* yAxis = (QValueAxis*) chart->axisY();
+    yAxis->setRange(0, processes.size() + 1);
+    yAxis->setTickCount(processes.size() + 2);
+    chart->update();
+
 }
 void MainWindow::on_simulateBtn_clicked()
 {
@@ -95,9 +102,16 @@ void MainWindow::on_simulateBtn_clicked()
         scheduler = new SchedulerSRTN();
         break;
     }
+    for(auto& p : processes) p.finishTime = 0;
     scheduler->setContextSwitchTime(ui->spinBox->value());
     TaskManager manager(scheduler);
     manager.submitProcesses(processes);
     scheduler->subscribe(this);
     scheduler->simulate();
+}
+
+void MainWindow::on_showStatsBtn_clicked()
+{
+    StatsDialog dialog(processes);
+    dialog.exec();
 }

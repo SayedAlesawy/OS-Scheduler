@@ -10,15 +10,13 @@ class SchedulerRR : public Scheduler
 public:
 	void submitProcess(Process process) override;
     int _currentTask() override;
-    bool isQueueEmpty() override {return processQueue.empty() && !busy;}
+    bool isQueueEmpty() override {return processQueue.empty();}
 
 protected:
 	void beginStep() override;
 
 private:
 	std::queue<Process> processQueue;
-	Process currentProcess;
-	bool busy = false;
 	int quantum = 5, quanta = 5;
 };
 

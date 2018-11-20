@@ -9,6 +9,8 @@ struct Process
     int priority;
     int remainingTime;
 
+    int finishTime;
+
 	Process() {
 		//Empty
 	}
@@ -20,7 +22,8 @@ struct Process
 		burstTime = _burst;
 		priority = _prioirty;
 		remainingTime = burstTime;
-	}
+        finishTime = 0;
+    }
 };
 
 #endif

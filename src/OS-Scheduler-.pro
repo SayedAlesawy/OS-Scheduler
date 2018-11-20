@@ -34,7 +34,8 @@ SOURCES += \
     SchedulerRR.cpp \
     SchedulerSRTN.cpp \
     Main.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    StatsDialog.cpp
 
 HEADERS += \
     Process.h \
@@ -50,10 +51,12 @@ HEADERS += \
     SchedulerRR.h \
     Subscriber.h \
     SchedulerSRTN.h \
-    MainWindow.h
+    MainWindow.h \
+    StatsDialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    statsdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

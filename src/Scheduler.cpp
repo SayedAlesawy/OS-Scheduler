@@ -27,7 +27,7 @@ void Scheduler::endSimulation()
 int Scheduler::currentTask()
 {
     if(csRemainingTime > 0)
-        return -1;
+        return 0;
     return _currentTask();
 }
 

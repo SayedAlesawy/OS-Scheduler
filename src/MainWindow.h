@@ -9,6 +9,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QtCharts/QLegendMarker>
+#include <QtCharts/QCategoryAxis>
+#include <QtCharts/QValueAxis>
 
 #include "ProcessGenerator.h"
 #include "GenerationParams.h"
@@ -19,7 +21,7 @@
 #include "SchedulerRR.h"
 #include "SchedulerSRTN.h"
 #include "TaskManager.h"
-
+#include "StatsDialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,8 +40,8 @@ public:
 
 private slots:
     void on_browseBtn_clicked();
-
     void on_simulateBtn_clicked();
+    void on_showStatsBtn_clicked();
 
 private:
     enum SchedulerType : int
@@ -48,13 +50,12 @@ private:
     };
 
     Ui::MainWindow *ui;
-    QtCharts::QLineSeries* series;
 
+    QtCharts::QLineSeries* series;
     QtCharts::QChart* chart;
     QtCharts::QChartView* chartView;
 
     vector<Process> processes;
-
     Scheduler* scheduler;
 };
 
