@@ -11,6 +11,7 @@
 #include <QtCharts/QLegendMarker>
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QValueAxis>
+#include <QScrollArea>
 
 #include "ProcessGenerator.h"
 #include "GenerationParams.h"
@@ -42,6 +43,8 @@ private slots:
     void on_browseBtn_clicked();
     void on_simulateBtn_clicked();
     void on_showStatsBtn_clicked();
+
+    void on_comboBox_currentIndexChanged(int index);
 
 private:
     enum SchedulerType : int

@@ -52,7 +52,8 @@ HEADERS += \
     Subscriber.h \
     SchedulerSRTN.h \
     MainWindow.h \
-    StatsDialog.h
+    StatsDialog.h \
+    ProcessStat.h
 
 FORMS += \
     mainwindow.ui \

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "ProcessStat.h"
 #include "Process.h"
 #include "GenerationParams.h"
 
@@ -18,9 +19,13 @@ public:
 
     // vector<ScheduledTask> readScheduledTasks(string inputFile);
 
-	void writeGeneratedFile(string outputFile, vector<Process> processes);
+    void writeGeneratedFile(string outputFile, vector<Process> processes);
+
+    //vector<Process>readProcessesFile(string inputFile);
 
     // void writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks);
+
+    void saveFile(string outputFile, vector<ProcessStat> stats, double totalATAT, double totalAWTAT);
 
     bool error;
 };

@@ -8,7 +8,7 @@ void SchedulerFCFS::submitProcess(Process process)
 int SchedulerFCFS::_currentTask()
 {
     if(processQueue.empty())
-        return -1;
+        return 0;
     return processQueue.front().id;
 }
 

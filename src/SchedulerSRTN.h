@@ -23,7 +23,8 @@ private:
     {
         bool operator() (const Process& p1, const Process& p2) const
         {
-            return p1.remainingTime >= p2.remainingTime;
+            if(p1.remainingTime == p2.remainingTime) return p1.id > p2.id;
+            return p1.remainingTime > p2.remainingTime;
         }
     };
     std::priority_queue<Process, std::vector<Process>, Comparator> processQueue;
