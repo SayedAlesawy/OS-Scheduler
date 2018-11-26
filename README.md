@@ -1,4 +1,4 @@
-# OS-Schedular-
+# OS-Scheduler
 A basic OS scheduler implementing some of the most common scheduling algorithms. 
 
 # Implemented algorithms:
@@ -8,7 +8,7 @@ A basic OS scheduler implementing some of the most common scheduling algorithms.
 
 3- Preemptive Round Robin (RR).
 
-4- Preemptive Shortest Time Remanining (STRN).
+4- Preemptive Shortest Time Remanining Next (STRN).
 
 # Provided Statistics 
 1- Process waiting time.
