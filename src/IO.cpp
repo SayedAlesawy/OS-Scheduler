@@ -105,6 +105,7 @@ void IO::saveFile(string outputFile, vector<ProcessStat> stats, double totalATAT
 
     out<<endl<<totalATAT<<'\t'<<totalAWTAT<<endl;
 }
+<<<<<<< HEAD
 
 vector<Process> IO::readProcesses(string inputFile)
 {
@@ -128,3 +129,5 @@ vector<Process> IO::readProcesses(string inputFile)
 }
 
 
+=======
+>>>>>>> 052b66c1631a7138683cbe4cbaa0a2676f47a2db

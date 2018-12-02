@@ -78,7 +78,12 @@ void MainWindow::on_browseBtn_clicked()
     QString selectedFile = selectedFiles[0];
 
     IO inputReader;
+<<<<<<< HEAD
     if(selectedFile.endsWith(".txt"))
+=======
+    GenerationParams params = inputReader.readParamsFile(selectedFile.toStdString());
+    if(inputReader.error)
+>>>>>>> 052b66c1631a7138683cbe4cbaa0a2676f47a2db
     {
         processes = inputReader.readProcesses(selectedFile.toStdString());
     }

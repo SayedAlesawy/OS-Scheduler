@@ -13,7 +13,7 @@ void SchedulerHPF::submitProcess(Process process)
 
 int SchedulerHPF::_currentTask()
 {
-    if(busy)
+    if(busy && currentProcess.remainingTime != 0)
         return currentProcess.id;
     if(processQueue.empty())
         return 0;
