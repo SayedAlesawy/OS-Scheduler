@@ -1,8 +1,12 @@
 #include "SchedulerRR.h"
 //#include<iostream>
 
+SchedulerRR::SchedulerRR(int quanta) : quantum(quanta), quanta(quanta) {}
+
 void SchedulerRR::submitProcess(Process process)
 {
+    if(processQueue.empty())
+        switchContext();
 	processQueue.push(process);
 }
 

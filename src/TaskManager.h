@@ -19,6 +19,7 @@ public:
 private:
     static bool comparator(const Process& p1, const Process& p2)
     {
+        if(p1.arrivalTime == p2.arrivalTime) return p1.id < p2.id;
         return p1.arrivalTime < p2.arrivalTime;
     }
 

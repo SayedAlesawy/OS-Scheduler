@@ -8,6 +8,7 @@
 class SchedulerRR : public Scheduler
 {
 public:
+    SchedulerRR(int quanta);
 	void submitProcess(Process process) override;
     int _currentTask() override;
     bool isQueueEmpty() override {return processQueue.empty();}

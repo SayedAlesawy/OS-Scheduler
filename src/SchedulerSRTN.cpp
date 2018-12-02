@@ -5,6 +5,8 @@ SchedulerSRTN::SchedulerSRTN()
 
 void SchedulerSRTN::submitProcess(Process process)
 {
+    if(processQueue.empty())
+        switchContext();
     int lastId = process.id;
     if(!processQueue.empty())
         lastId = processQueue.top().id;

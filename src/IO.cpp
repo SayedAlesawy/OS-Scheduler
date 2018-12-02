@@ -9,7 +9,7 @@ GenerationParams IO::readParamsFile(string inputFile)
 {
     error = false;
 	ifstream in;
-	in.open(inputFile + ".txt");
+    in.open(inputFile);
 
     int processesCount = 0;
     double arrivalTimeMu = 0,
@@ -92,3 +92,39 @@ void IO::writeScheduledTasks(string outputFile, vector<ScheduledTask> tasks)
 	out.close();
 }
 */
+
+void IO::saveFile(string outputFile, vector<ProcessStat> stats, double totalATAT, double totalAWTAT)
+{
+    ofstream out;
+    out.open(outputFile);
+
+    for(int i=0; i<stats.size(); i++){
+        out << stats[i].id << '\t' << stats[i].waitingTime << '\t' <<
+               stats[i].TAT << '\t' << stats[i].weightedTAT << endl;
+    }
+
+    out<<endl<<totalATAT<<'\t'<<totalAWTAT<<endl;
+}
+
+vector<Process> IO::readProcesses(string inputFile)
+{
+    ifstream in;
+    in.open(inputFile);
+
+    int processCount;
+    in >>processCount;
+
+    vector<Process> processes (processCount);
+
+    for(int i=0;i<processCount;i++)
+    {
+        Process process;
+        in >> process.id >> process.arrivalTime >> process.burstTime >> process.priority;
+        process.remainingTime = process.burstTime;
+        processes[i] = process;
+    }
+
+    return processes;
+}
+
+

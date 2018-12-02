@@ -2,13 +2,15 @@
 
 void SchedulerFCFS::submitProcess(Process process)
 {
+    if(processQueue.empty())
+        switchContext();
     processQueue.push(process);
 }
 
 int SchedulerFCFS::_currentTask()
 {
     if(processQueue.empty())
-        return -1;
+        return 0;
     return processQueue.front().id;
 }
 

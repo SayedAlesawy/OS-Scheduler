@@ -1,9 +1,14 @@
 #include "SchedulerHPF.h"
 //#include <iostream>
 
+bool flaga = true;
+
 void SchedulerHPF::submitProcess(Process process)
 {
-	processQueue.push(process);
+    if(flaga)
+        switchContext();
+    flaga = false;
+    processQueue.push(process);
 }
 
 int SchedulerHPF::_currentTask()
@@ -11,22 +16,22 @@ int SchedulerHPF::_currentTask()
     if(busy)
         return currentProcess.id;
     if(processQueue.empty())
-        return -1;
+        return 0;
     return processQueue.top().id;
 }
 
 void SchedulerHPF::beginStep()
 {
 	if (busy) {
+        currentProcess.remainingTime--;
 		if (currentProcess.remainingTime == 0) {
             busy = false;
             switchContext();
 			//std::cout << "Task finished, priority: " << currentProcess.priority << " " << std::endl;
 			//std::cout << "Id = " << completedTask.id << " begin: " << completedTask.begin << " end: " << completedTask.end << std::endl;
 		}
-		else currentProcess.remainingTime--;
 	}
-	else {
+    else {
 		if (processQueue.empty()) return;
 
 		currentProcess = processQueue.top();

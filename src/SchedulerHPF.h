@@ -19,6 +19,7 @@ private:
 	struct Comparator {
 		public:
 			bool operator() (Process p1, Process p2) {
+                if(p1.priority == p2.priority) return p1.id > p2.id;
 				return p1.priority < p2.priority;
 			}
 	};
